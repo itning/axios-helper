@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "target": "ES5",
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "strict": true,
+    // 自动创建类型声明文件
+    "declaration": true,
+    "preserveConstEnums": true,
+    // 出错时不编译成JS文件
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "outDir": "dist/",
+    "lib": [
+      "DOM",
+      "ES2015",
+      "ES2016",
+      "ES2017",
+      "ES2018",
+      "ES2019",
+      "ESNext"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "test"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "axios-helper",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc --build tsconfig.json"
+  },
+  "description": "This lib will help you better use axios",
+  "keywords": [
+    "axios",
+    "util",
+    "helper"
+  ],
+  "repository": {
+    "url": "http://github.com/itning/axios-helper",
+    "type": "git"
+  },
+  "author": {
+    "url": "http://github.com/itning",
+    "name": "itning",
+    "email": "itning@itning.top"
+  },
+  "license": "Apache License 2.0",
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.2"
+  }
+}
