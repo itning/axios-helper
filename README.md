@@ -21,13 +21,13 @@ npm i @itning/axios-helper
 
 ```javascript
 import {AxiosHelperConfig, Patch} from "@itning/axios-helper";
-
+// Config message toast when net error.
 AxiosHelperConfig.errorMsgImpl = {
     showErrorToast(title, msg) {
         console.log(title, msg);
     }
 };
-
+// Config interceptor for each request or response.
 AxiosHelperConfig.axiosInstanceBuilder
     .requestInterceptor({
         onFulfilled: request => {
@@ -46,20 +46,30 @@ AxiosHelperConfig.axiosInstanceBuilder
         }
     })
     .build();
-
+// You can use this api to send http patch request.
 Patch("http://api.localhost.com")
+	// Config http success code,default 200.
     .withSuccessCode(200)
+	// Config whether to open error message, defalut true.
     .withEnableErrorMsg(false)
+	// Config error message title, defalut '错误'.
     .withErrorStartMsg("")
+	// Invoke function when error happen.
     .withErrorHandle((error) => {
 
     })
+	// Send http request with form data.
     .withFormData({"id": "1"})
+	// Send http request with url search param data.
     .withURLSearchParams({})
+	// Send http request with json data.	
     .withJson({1: 1})
+	// When server response received will call this function.
+    // Must call this function and will send http request.
     .do(response => {
 
     })
+	// When do function invoked.
     .doAfter(() => {
 
     });
