@@ -47,6 +47,11 @@ AxiosHelperConfig.axiosInstanceBuilder
     })
     .build();
 // You can use this api to send http patch request.
+// Other http request
+//Get("http://api.localhost.com")
+//Delete("http://api.localhost.com")
+//Post("http://api.localhost.com")
+//Put("http://api.localhost.com")
 Patch("http://api.localhost.com")
     // Config http success code,default 200.
     .withSuccessCode(200)
