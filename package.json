@@ -1,5 +1,5 @@
 {
-  "name": "axios-helper",
+  "name": "@itning/axios-helper",
   "version": "1.0.0",
   "main": "./dist/index.js",
   "scripts": {
