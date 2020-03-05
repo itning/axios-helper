@@ -48,28 +48,28 @@ AxiosHelperConfig.axiosInstanceBuilder
     .build();
 // You can use this api to send http patch request.
 Patch("http://api.localhost.com")
-	// Config http success code,default 200.
+    // Config http success code,default 200.
     .withSuccessCode(200)
-	// Config whether to open error message, defalut true.
+    // Config whether to open error message, defalut true.
     .withEnableErrorMsg(false)
-	// Config error message title, defalut '错误'.
+    // Config error message title, defalut '错误'.
     .withErrorStartMsg("")
-	// Invoke function when error happen.
+    // Invoke function when error happen.
     .withErrorHandle((error) => {
 
     })
-	// Send http request with form data.
+    // Send http request with form data.
     .withFormData({"id": "1"})
-	// Send http request with url search param data.
+    // Send http request with url search param data.
     .withURLSearchParams({})
-	// Send http request with json data.	
+    // Send http request with json data.	
     .withJson({1: 1})
-	// When server response received will call this function.
+    // When server response received will call this function.
     // Must call this function and will send http request.
     .do(response => {
 
     })
-	// When do function invoked.
+    // When do function invoked.
     .doAfter(() => {
 
     });
