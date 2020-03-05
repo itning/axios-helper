@@ -15,6 +15,10 @@
 
 - How to use this lib ?
 
+```shell
+npm i @itning/axios-helper
+```
+
 ```javascript
 import {AxiosHelperConfig, Patch} from "axios-helper";
 
