@@ -24,9 +24,8 @@ export declare enum HttpRequestMethods {
     GET = 0,
     POST = 1,
     DELETE = 2,
-    UPDATE = 3,
-    PUT = 4,
-    PATCH = 5
+    PUT = 3,
+    PATCH = 4
 }
 export declare enum DataType {
     NONE = 0,

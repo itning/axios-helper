@@ -5,9 +5,8 @@ var HttpRequestMethods;
     HttpRequestMethods[HttpRequestMethods["GET"] = 0] = "GET";
     HttpRequestMethods[HttpRequestMethods["POST"] = 1] = "POST";
     HttpRequestMethods[HttpRequestMethods["DELETE"] = 2] = "DELETE";
-    HttpRequestMethods[HttpRequestMethods["UPDATE"] = 3] = "UPDATE";
-    HttpRequestMethods[HttpRequestMethods["PUT"] = 4] = "PUT";
-    HttpRequestMethods[HttpRequestMethods["PATCH"] = 5] = "PATCH";
+    HttpRequestMethods[HttpRequestMethods["PUT"] = 3] = "PUT";
+    HttpRequestMethods[HttpRequestMethods["PATCH"] = 4] = "PATCH";
 })(HttpRequestMethods = exports.HttpRequestMethods || (exports.HttpRequestMethods = {}));
 var DataType;
 (function (DataType) {

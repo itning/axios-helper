@@ -5,7 +5,6 @@ import GetRequestActuator from "../method/GetRequestActuator";
 import PostRequestActuator from "../method/PostRequestActuator";
 import DeleteRequestActuator from "../method/DeleteRequestActuator";
 import PatchRequestActuator from "../method/PatchRequestActuator";
-import UpdateRequestActuator from "../method/UpdateRequestActuator";
 import PutRequestActuator from "../method/PutRequestActuator";
 
 export default class Distribution {
@@ -28,9 +27,6 @@ export default class Distribution {
             }
             case HttpRequestMethods.PATCH: {
                 return new PatchRequestActuator().invoke(instance, request);
-            }
-            case HttpRequestMethods.UPDATE: {
-                return new UpdateRequestActuator().invoke(instance, request);
             }
             case HttpRequestMethods.PUT: {
                 return new PutRequestActuator().invoke(instance, request);

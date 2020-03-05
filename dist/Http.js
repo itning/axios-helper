@@ -7,6 +7,7 @@ var GetBuilder_1 = __importDefault(require("./config/builder/GetBuilder"));
 var PostBuilder_1 = __importDefault(require("./config/builder/PostBuilder"));
 var PatchBuilder_1 = __importDefault(require("./config/builder/PatchBuilder"));
 var DeleteBuilder_1 = __importDefault(require("./config/builder/DeleteBuilder"));
+var PutBuilder_1 = __importDefault(require("./config/builder/PutBuilder"));
 var Http = (function () {
     function Http() {
     }
@@ -21,6 +22,9 @@ var Http = (function () {
     };
     Http.Patch = function (url) {
         return new PatchBuilder_1.default(url);
+    };
+    Http.Put = function (url) {
+        return new PutBuilder_1.default(url);
     };
     return Http;
 }());

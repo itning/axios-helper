@@ -4,7 +4,7 @@ import IRequest from "./IRequest";
 import IErrorMessage from "../config/IErrorMessage";
 
 export default class RequestActuator extends AbstractRequestActuator {
-    private static errorMsg?: IErrorMessage;
+    static errorMsg?: IErrorMessage;
 
     static set errorMsgImpl(errorMsg: IErrorMessage) {
         RequestActuator.errorMsg = errorMsg;

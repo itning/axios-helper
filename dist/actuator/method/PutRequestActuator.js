@@ -8,7 +8,15 @@ var PutRequestActuator = (function () {
         return method === IConfig_1.HttpRequestMethods.PUT;
     };
     PutRequestActuator.prototype.invoke = function (instance, request) {
-        return instance.get(request.url);
+        if (request.config.data.urlSearchParam) {
+            return instance.put(request.url, request.config.data.urlSearchParam);
+        }
+        else if (request.config.data.form) {
+            return instance.put(request.url, request.config.data.form.param, { headers: { 'content-type': 'multipart/form-data' } });
+        }
+        else {
+            return instance.put(request.url);
+        }
     };
     return PutRequestActuator;
 }());

@@ -9,6 +9,12 @@ export default class PutRequestActuator implements IRequestActuator {
     }
 
     invoke(instance: AxiosInstance, request: IRequest): Promise<AxiosResponse> {
-        return instance.get(request.url);
+        if (request.config.data.urlSearchParam) {
+            return instance.put(request.url, request.config.data.urlSearchParam);
+        } else if (request.config.data.form) {
+            return instance.put(request.url, request.config.data.form.param, {headers: {'content-type': 'multipart/form-data'}});
+        } else {
+            return instance.put(request.url);
+        }
     }
 }

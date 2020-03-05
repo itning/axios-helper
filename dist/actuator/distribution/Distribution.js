@@ -8,7 +8,6 @@ var GetRequestActuator_1 = __importDefault(require("../method/GetRequestActuator
 var PostRequestActuator_1 = __importDefault(require("../method/PostRequestActuator"));
 var DeleteRequestActuator_1 = __importDefault(require("../method/DeleteRequestActuator"));
 var PatchRequestActuator_1 = __importDefault(require("../method/PatchRequestActuator"));
-var UpdateRequestActuator_1 = __importDefault(require("../method/UpdateRequestActuator"));
 var PutRequestActuator_1 = __importDefault(require("../method/PutRequestActuator"));
 var Distribution = (function () {
     function Distribution(method) {
@@ -27,9 +26,6 @@ var Distribution = (function () {
             }
             case IConfig_1.HttpRequestMethods.PATCH: {
                 return new PatchRequestActuator_1.default().invoke(instance, request);
-            }
-            case IConfig_1.HttpRequestMethods.UPDATE: {
-                return new UpdateRequestActuator_1.default().invoke(instance, request);
             }
             case IConfig_1.HttpRequestMethods.PUT: {
                 return new PutRequestActuator_1.default().invoke(instance, request);

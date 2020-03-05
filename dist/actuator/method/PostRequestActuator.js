@@ -8,7 +8,28 @@ var PostRequestActuator = (function () {
         return method === IConfig_1.HttpRequestMethods.POST;
     };
     PostRequestActuator.prototype.invoke = function (instance, request) {
-        return instance.get(request.url);
+        if (request.config.data.urlSearchParam) {
+            return instance.post(request.url, request.config.data.urlSearchParam);
+        }
+        else if (request.config.data.form) {
+            if (request.config.data.form.uploadProgress) {
+                var uploadProgress_1 = request.config.data.form.uploadProgress;
+                var config = {
+                    headers: { 'content-type': 'multipart/form-data' },
+                    onUploadProgress: function (progressEvent) {
+                        var progress = progressEvent.loaded / progressEvent.total * 100 | 0;
+                        uploadProgress_1(progress);
+                    }
+                };
+                return instance.post(request.url, request.config.data.form.param, config);
+            }
+            else {
+                return instance.post(request.url, request.config.data.form.param, { headers: { 'content-type': 'multipart/form-data' } });
+            }
+        }
+        else {
+            return instance.post(request.url);
+        }
     };
     return PostRequestActuator;
 }());

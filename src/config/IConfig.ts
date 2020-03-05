@@ -26,7 +26,6 @@ export enum HttpRequestMethods {
     GET,
     POST,
     DELETE,
-    UPDATE,
     PUT,
     PATCH
 }

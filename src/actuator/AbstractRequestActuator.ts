@@ -2,6 +2,7 @@ import {AxiosError, AxiosInstance, AxiosResponse} from 'axios'
 import IRequest from "./IRequest";
 import AxiosInstanceFactory from "../factory/AxiosInstanceFactory";
 import Distribution from "./distribution/Distribution";
+import RequestActuator from "./RequestActuator";
 
 /**
  * 请求执行器
@@ -19,9 +20,21 @@ export default abstract class AbstractRequestActuator {
     private distribution(): void {
         new Distribution(this.request.method)
             .distribution(this.instance, this.request)
-            .then(this.onResponse)
-            .catch(this.onError)
-            .then(this.onAfter)
+            .then(response => {
+                if (response.status === this.request.config.success.code) {
+                    this.onResponse.call(this, response);
+                } else {
+                    if (RequestActuator.errorMsg && this.request.config.errorMsg.enable) {
+                        RequestActuator.errorMsg.showErrorToast(this.request.config.errorMsg.startStr, response.data, 4.5)
+                    }
+                }
+            })
+            .catch(error => {
+                this.onError.call(this, error);
+            })
+            .then(() => {
+                this.onAfter.call(this);
+            })
     }
 
     protected abstract onResponse(response: AxiosResponse): void;

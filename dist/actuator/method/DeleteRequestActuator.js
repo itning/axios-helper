@@ -8,7 +8,18 @@ var DeleteRequestActuator = (function () {
         return method === IConfig_1.HttpRequestMethods.DELETE;
     };
     DeleteRequestActuator.prototype.invoke = function (instance, request) {
-        return instance.get(request.url);
+        if (request.config.data.urlSearchParam) {
+            return instance.delete(request.url, { data: request.config.data.urlSearchParam });
+        }
+        else if (request.config.data.form) {
+            return instance.delete(request.url, {
+                data: request.config.data.form.param,
+                headers: { 'content-type': 'multipart/form-data' }
+            });
+        }
+        else {
+            return instance.delete(request.url);
+        }
     };
     return DeleteRequestActuator;
 }());
