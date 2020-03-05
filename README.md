@@ -23,8 +23,8 @@ npm i @itning/axios-helper
 import {AxiosHelperConfig, Patch} from "axios-helper";
 
 AxiosHelperConfig.errorMsgImpl = {
-    showErrorToast(title, msg, duration) {
-
+    showErrorToast(title, msg) {
+        console.log(title, msg);
     }
 };
 

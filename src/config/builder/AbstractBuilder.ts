@@ -28,33 +28,33 @@ export default abstract class AbstractBuilder {
         this.url = url;
     }
 
-    withSuccessCode(code: number): AbstractBuilder {
+    withSuccessCode(code: number) {
         this.config.success.code = code;
         return this;
     }
 
-    withEnableErrorMsg(enable: boolean): AbstractBuilder {
+    withEnableErrorMsg(enable: boolean) {
         this.config.errorMsg.enable = enable;
         return this;
     }
 
-    withErrorStartMsg(msg: string): AbstractBuilder {
+    withErrorStartMsg(msg: string) {
         this.config.errorMsg.startStr = msg;
         return this;
     }
 
-    withErrorHandle(func: (error: AxiosError) => void): AbstractBuilder {
+    withErrorHandle(func: (error: AxiosError) => void) {
         this.config.errorMsg.handleFun = func;
         return this;
     }
 
-    do(response: (response: AxiosResponse) => void): AbstractBuilder {
+    do(response: (response: AxiosResponse) => void) {
         this.config.request.do = response;
         new RequestActuator({method: this.method, url: this.url, config: this.config});
         return this;
     }
 
-    doAfter(after: () => void): AbstractBuilder {
+    doAfter(after: () => void) {
         this.config.request.after = after;
         return this;
     }

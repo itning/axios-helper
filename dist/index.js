@@ -10,5 +10,6 @@ exports.Post = Http_1.default.Post;
 exports.Delete = Http_1.default.Delete;
 exports.Patch = Http_1.default.Patch;
 exports.Put = Http_1.default.Put;
+exports.Download = Http_1.default.Download;
 exports.AxiosHelperConfig = HelpConfig_1.default;
 //# sourceMappingURL=index.js.map

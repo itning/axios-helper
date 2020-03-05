@@ -9,4 +9,5 @@ export default class Http {
     static Delete(url: string): DeleteBuilder;
     static Patch(url: string): PatchBuilder;
     static Put(url: string): PutBuilder;
+    static Download(url: string, fileName: (fileName: any) => string): void;
 }

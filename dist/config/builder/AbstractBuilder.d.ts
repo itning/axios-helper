@@ -5,10 +5,10 @@ export default abstract class AbstractBuilder {
     private readonly url;
     protected config: IConfig;
     protected constructor(method: HttpRequestMethods, url: string);
-    withSuccessCode(code: number): AbstractBuilder;
-    withEnableErrorMsg(enable: boolean): AbstractBuilder;
-    withErrorStartMsg(msg: string): AbstractBuilder;
-    withErrorHandle(func: (error: AxiosError) => void): AbstractBuilder;
-    do(response: (response: AxiosResponse) => void): AbstractBuilder;
-    doAfter(after: () => void): AbstractBuilder;
+    withSuccessCode(code: number): this;
+    withEnableErrorMsg(enable: boolean): this;
+    withErrorStartMsg(msg: string): this;
+    withErrorHandle(func: (error: AxiosError) => void): this;
+    do(response: (response: AxiosResponse) => void): this;
+    doAfter(after: () => void): this;
 }

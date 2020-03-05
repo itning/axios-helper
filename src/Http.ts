@@ -3,6 +3,8 @@ import PostBuilder from "./config/builder/PostBuilder";
 import PatchBuilder from "./config/builder/PatchBuilder";
 import DeleteBuilder from "./config/builder/DeleteBuilder";
 import PutBuilder from "./config/builder/PutBuilder";
+import AxiosInstanceFactory from "./factory/AxiosInstanceFactory";
+import RequestActuator from "./actuator/RequestActuator";
 
 export default class Http {
     static Get(url: string) {
@@ -23,5 +25,27 @@ export default class Http {
 
     static Put(url: string) {
         return new PutBuilder(url);
+    }
+
+    static Download(url: string, fileName: (fileName: any) => string) {
+        AxiosInstanceFactory.instance
+            .get(url, {
+                responseType: 'blob' //指定返回数据的格式为blob
+            }).then(response => {
+            let url = window.URL.createObjectURL(response.data);
+            let a = document.createElement("a");
+            document.body.appendChild(a);
+            a.href = url;
+            a.download = fileName(response.headers);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }).catch(error => {
+            if (error.response !== undefined) {
+                console.warn(error);
+                if (RequestActuator.errorMsg) {
+                    RequestActuator.errorMsg.showErrorToast("下载失败：", error.toString());
+                }
+            }
+        });
     }
 }

@@ -35,7 +35,7 @@ var RequestActuator = (function (_super) {
     RequestActuator.prototype.onError = function (error) {
         if (this.request.config.errorMsg.enable) {
             if (RequestActuator.errorMsg) {
-                RequestActuator.errorMsg.showErrorToast(this.request.config.errorMsg.startStr, error.response ? error.response.data : "", 4.5);
+                RequestActuator.errorMsg.showErrorToast(this.request.config.errorMsg.startStr, error.response ? error.response.data : "");
             }
             if (this.request.config.errorMsg.handleFun) {
                 this.request.config.errorMsg.handleFun.call(null, error);

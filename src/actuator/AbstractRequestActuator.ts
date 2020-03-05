@@ -25,7 +25,7 @@ export default abstract class AbstractRequestActuator {
                     this.onResponse.call(this, response);
                 } else {
                     if (RequestActuator.errorMsg && this.request.config.errorMsg.enable) {
-                        RequestActuator.errorMsg.showErrorToast(this.request.config.errorMsg.startStr, response.data, 4.5)
+                        RequestActuator.errorMsg.showErrorToast(this.request.config.errorMsg.startStr, response.data)
                     }
                 }
             })

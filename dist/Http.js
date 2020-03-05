@@ -8,6 +8,8 @@ var PostBuilder_1 = __importDefault(require("./config/builder/PostBuilder"));
 var PatchBuilder_1 = __importDefault(require("./config/builder/PatchBuilder"));
 var DeleteBuilder_1 = __importDefault(require("./config/builder/DeleteBuilder"));
 var PutBuilder_1 = __importDefault(require("./config/builder/PutBuilder"));
+var AxiosInstanceFactory_1 = __importDefault(require("./factory/AxiosInstanceFactory"));
+var RequestActuator_1 = __importDefault(require("./actuator/RequestActuator"));
 var Http = (function () {
     function Http() {
     }
@@ -25,6 +27,27 @@ var Http = (function () {
     };
     Http.Put = function (url) {
         return new PutBuilder_1.default(url);
+    };
+    Http.Download = function (url, fileName) {
+        AxiosInstanceFactory_1.default.instance
+            .get(url, {
+            responseType: 'blob'
+        }).then(function (response) {
+            var url = window.URL.createObjectURL(response.data);
+            var a = document.createElement("a");
+            document.body.appendChild(a);
+            a.href = url;
+            a.download = fileName(response.headers);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }).catch(function (error) {
+            if (error.response !== undefined) {
+                console.warn(error);
+                if (RequestActuator_1.default.errorMsg) {
+                    RequestActuator_1.default.errorMsg.showErrorToast("下载失败：", error.toString());
+                }
+            }
+        });
     };
     return Http;
 }());

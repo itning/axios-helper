@@ -5,4 +5,5 @@ export declare const Post: typeof Http.Post;
 export declare const Delete: typeof Http.Delete;
 export declare const Patch: typeof Http.Patch;
 export declare const Put: typeof Http.Put;
+export declare const Download: typeof Http.Download;
 export declare const AxiosHelperConfig: typeof HelpConfig;

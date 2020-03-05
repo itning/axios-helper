@@ -6,7 +6,7 @@ import IPostData from "../requestdata/IPostData";
 import IDeleteData from "../requestdata/IDeleteData";
 
 export default abstract class AbstractUrlSearchAndFormDataBuilder extends AbstractBuilder implements IPostData, IDeleteData {
-    withFormData(params: IFormParamType, uploadProgress?: (progress: number) => void): AbstractBuilder {
+    withFormData(params: IFormParamType, uploadProgress?: (progress: number) => void) {
         let param = new FormData();
         for (let p in params) {
             if (params.hasOwnProperty(p)) {
@@ -19,7 +19,7 @@ export default abstract class AbstractUrlSearchAndFormDataBuilder extends Abstra
         return this;
     }
 
-    withURLSearchParams(params: IUrlSearchParamType): AbstractBuilder {
+    withURLSearchParams(params: IUrlSearchParamType) {
         let param = new URLSearchParams();
         for (let p in params) {
             if (params.hasOwnProperty(p)) {

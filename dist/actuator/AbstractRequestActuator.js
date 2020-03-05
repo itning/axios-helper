@@ -22,7 +22,7 @@ var AbstractRequestActuator = (function () {
             }
             else {
                 if (RequestActuator_1.default.errorMsg && _this.request.config.errorMsg.enable) {
-                    RequestActuator_1.default.errorMsg.showErrorToast(_this.request.config.errorMsg.startStr, response.data, 4.5);
+                    RequestActuator_1.default.errorMsg.showErrorToast(_this.request.config.errorMsg.startStr, response.data);
                 }
             }
         })

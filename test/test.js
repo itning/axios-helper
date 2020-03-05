@@ -1,8 +1,8 @@
-import {AxiosHelperConfig, Patch} from "../build";
+import {AxiosHelperConfig, Patch} from "../dist";
 
 //const http = require("../build/index.js");
 AxiosHelperConfig.errorMsgImpl = {
-    showErrorToast(title, msg, duration) {
+    showErrorToast(title, msg) {
 
     }
 };
