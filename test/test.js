@@ -1,44 +1,82 @@
-import {AxiosHelperConfig, Patch} from "../dist";
+import {AxiosHelperConfig, Get, Patch, Post} from "../dist/index"
 
-//const http = require("../build/index.js");
 AxiosHelperConfig.errorMsgImpl = {
     showErrorToast(title, msg) {
-
+        console.log(title + msg);
     }
 };
+
 AxiosHelperConfig.axiosInstanceBuilder
     .requestInterceptor({
-        onFulfilled: request => {
-
+        onFulfilled: value => {
+            value.headers = {"Accept": "application/json"};
+            return value;
         },
         onRejected: error => {
-
+            return Promise.reject(error);
         }
     })
     .responseInterceptor({
         onFulfilled: response => {
-
+            return Promise.resolve(response);
         },
         onRejected: error => {
-
+            if (error.response === undefined) {
+                return Promise.reject(error);
+            }
+            if (error.response.status) {
+                switch (error.response.status) {
+                    case 401:
+                        setTimeout(() => {
+                            window.location.href = "/login";
+                        }, 2000);
+                        return;
+                    case 403:
+                        console.warn('权限不足');
+                        break;
+                    case 404:
+                        console.warn('请求URL不存在');
+                        break;
+                    case 500:
+                        console.warn('服务器错误');
+                        break;
+                    case 503:
+                        console.warn('服务器错误');
+                        break;
+                    default:
+                        console.warn(error);
+                }
+                return Promise.reject(error);
+            }
         }
     })
     .build();
-Patch("http://api.map.baidu.com/telematics/v3/weather?location=嘉兴&output=json&ak=5slgyqGDENN7Sy7pw29IUvrZ")
-    // 成功状态码
-    .withSuccessCode(200)
-    // 出现错误时是否执行错误消息
-    .withEnableErrorMsg(false)
-    .withErrorStartMsg("")
-    .withErrorHandle((error) => {
 
-    })
-    .withFormData({"id": "1"})
-    .withURLSearchParams({})
-    .withJson({1: 1})
-    .do(response => {
+(() => {
+    Get("http://localhost:8888/a")
+        .withSuccessCode(100)
+        .withEnableErrorMsg(true)
+        .do(response => {
+            console.log(response)
+        })
+        .doAfter(() => {
+            console.log("after")
+        });
 
-    })
-    .doAfter(() => {
+    Post("http://localhost:8888/a")
+        .withURLSearchParams({msg: "assd"})
+        .withSuccessCode(200)
+        .withEnableErrorMsg(true)
+        .do(response => {
+            console.log(response)
+        })
+        .doAfter(() => {
+            console.log("after")
+        });
 
-    });
+    Patch("http://localhost:8888/a")
+        .withJson({a: 1})
+        .do(response => {
+            console.log(response)
+        })
+})();
