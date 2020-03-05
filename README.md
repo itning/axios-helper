@@ -20,7 +20,7 @@ npm i @itning/axios-helper
 ```
 
 ```javascript
-import {AxiosHelperConfig, Patch} from "axios-helper";
+import {AxiosHelperConfig, Patch} from "@itning/axios-helper";
 
 AxiosHelperConfig.errorMsgImpl = {
     showErrorToast(title, msg) {
