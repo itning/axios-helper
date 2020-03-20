@@ -9,7 +9,7 @@ var PatchBuilder_1 = __importDefault(require("./config/builder/PatchBuilder"));
 var DeleteBuilder_1 = __importDefault(require("./config/builder/DeleteBuilder"));
 var PutBuilder_1 = __importDefault(require("./config/builder/PutBuilder"));
 var AxiosInstanceFactory_1 = __importDefault(require("./factory/AxiosInstanceFactory"));
-var RequestActuator_1 = __importDefault(require("./actuator/RequestActuator"));
+var ErrorMessage_1 = __importDefault(require("./actuator/message/ErrorMessage"));
 var Http = (function () {
     function Http() {
     }
@@ -42,9 +42,10 @@ var Http = (function () {
             window.URL.revokeObjectURL(url);
         }).catch(function (error) {
             if (error.response !== undefined) {
+                var errorMessage = new ErrorMessage_1.default();
                 console.warn(error);
-                if (RequestActuator_1.default.errorMsg) {
-                    RequestActuator_1.default.errorMsg.showErrorToast("下载失败：", error.toString());
+                if (errorMessage.isImplements()) {
+                    errorMessage.showErrorMsg("下载失败：", error.toString());
                 }
             }
         });

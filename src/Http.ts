@@ -4,7 +4,7 @@ import PatchBuilder from "./config/builder/PatchBuilder";
 import DeleteBuilder from "./config/builder/DeleteBuilder";
 import PutBuilder from "./config/builder/PutBuilder";
 import AxiosInstanceFactory from "./factory/AxiosInstanceFactory";
-import RequestActuator from "./actuator/RequestActuator";
+import ErrorMessage from "./actuator/message/ErrorMessage";
 
 export default class Http {
     static Get(url: string) {
@@ -41,9 +41,10 @@ export default class Http {
             window.URL.revokeObjectURL(url);
         }).catch(error => {
             if (error.response !== undefined) {
+                const errorMessage = new ErrorMessage();
                 console.warn(error);
-                if (RequestActuator.errorMsg) {
-                    RequestActuator.errorMsg.showErrorToast("下载失败：", error.toString());
+                if (errorMessage.isImplements()) {
+                    errorMessage.showErrorMsg("下载失败：", error.toString());
                 }
             }
         });

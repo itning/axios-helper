@@ -8,6 +8,7 @@ export default interface IConfig {
     errorMsg: {
         enable: boolean,
         startStr: string,
+        once: boolean,
         handleFun?: (error: AxiosError) => void
     },
     data: {

@@ -8,6 +8,7 @@ export default abstract class AbstractBuilder {
     withSuccessCode(code: number): this;
     withEnableErrorMsg(enable: boolean): this;
     withErrorStartMsg(msg: string): this;
+    withOnceMsg(): this;
     withErrorHandle(func: (error: AxiosError) => void): this;
     do(response: (response: AxiosResponse) => void): this;
     doAfter(after: () => void): this;

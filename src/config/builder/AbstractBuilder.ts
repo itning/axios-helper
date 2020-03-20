@@ -15,6 +15,7 @@ export default abstract class AbstractBuilder {
             }
         },
         errorMsg: {
+            once: false,
             enable: true,
             startStr: '错误'
         },
@@ -40,6 +41,11 @@ export default abstract class AbstractBuilder {
 
     withErrorStartMsg(msg: string) {
         this.config.errorMsg.startStr = msg;
+        return this;
+    }
+
+    withOnceMsg() {
+        this.config.errorMsg.once = true;
         return this;
     }
 

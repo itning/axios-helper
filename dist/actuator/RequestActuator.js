@@ -17,25 +17,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var AbstractRequestActuator_1 = __importDefault(require("./AbstractRequestActuator"));
+var ErrorMessage_1 = __importDefault(require("./message/ErrorMessage"));
 var RequestActuator = (function (_super) {
     __extends(RequestActuator, _super);
     function RequestActuator(request) {
         return _super.call(this, request) || this;
     }
-    Object.defineProperty(RequestActuator, "errorMsgImpl", {
-        set: function (errorMsg) {
-            RequestActuator.errorMsg = errorMsg;
-        },
-        enumerable: true,
-        configurable: true
-    });
     RequestActuator.prototype.onResponse = function (response) {
         this.request.config.request.do.call(null, response);
     };
     RequestActuator.prototype.onError = function (error) {
         if (this.request.config.errorMsg.enable) {
-            if (RequestActuator.errorMsg) {
-                RequestActuator.errorMsg.showErrorToast(this.request.config.errorMsg.startStr, error.response ? error.response.data : "");
+            if (RequestActuator.errorMessage.isImplements()) {
+                RequestActuator.errorMessage.autoShowErrorMsg(this.request.config.errorMsg.startStr, error.response ? error.response.data : "", this.request.config.errorMsg.once);
             }
             if (this.request.config.errorMsg.handleFun) {
                 this.request.config.errorMsg.handleFun.call(null, error);
@@ -47,6 +41,7 @@ var RequestActuator = (function (_super) {
             this.request.config.request.after.call(null);
         }
     };
+    RequestActuator.errorMessage = new ErrorMessage_1.default();
     return RequestActuator;
 }(AbstractRequestActuator_1.default));
 exports.default = RequestActuator;

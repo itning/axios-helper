@@ -1,14 +1,10 @@
 import AbstractRequestActuator from "./AbstractRequestActuator";
 import {AxiosError, AxiosResponse} from "axios";
 import IRequest from "./IRequest";
-import IErrorMessage from "../config/IErrorMessage";
+import ErrorMessage from "./message/ErrorMessage";
 
 export default class RequestActuator extends AbstractRequestActuator {
-    static errorMsg?: IErrorMessage;
-
-    static set errorMsgImpl(errorMsg: IErrorMessage) {
-        RequestActuator.errorMsg = errorMsg;
-    }
+    static errorMessage: ErrorMessage = new ErrorMessage();
 
     constructor(request: IRequest) {
         super(request);
@@ -20,8 +16,8 @@ export default class RequestActuator extends AbstractRequestActuator {
 
     protected onError(error: AxiosError): void {
         if (this.request.config.errorMsg.enable) {
-            if (RequestActuator.errorMsg) {
-                RequestActuator.errorMsg.showErrorToast(this.request.config.errorMsg.startStr, error.response ? error.response.data : "")
+            if (RequestActuator.errorMessage.isImplements()) {
+                RequestActuator.errorMessage.autoShowErrorMsg(this.request.config.errorMsg.startStr, error.response ? error.response.data : "", this.request.config.errorMsg.once);
             }
             if (this.request.config.errorMsg.handleFun) {
                 this.request.config.errorMsg.handleFun.call(null, error);

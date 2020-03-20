@@ -21,8 +21,8 @@ var AbstractRequestActuator = (function () {
                 _this.onResponse.call(_this, response);
             }
             else {
-                if (RequestActuator_1.default.errorMsg && _this.request.config.errorMsg.enable) {
-                    RequestActuator_1.default.errorMsg.showErrorToast(_this.request.config.errorMsg.startStr, response.data);
+                if (RequestActuator_1.default.errorMessage.isImplements() && _this.request.config.errorMsg.enable) {
+                    RequestActuator_1.default.errorMessage.autoShowErrorMsg(_this.request.config.errorMsg.startStr, response.data, _this.request.config.errorMsg.once);
                 }
             }
         })

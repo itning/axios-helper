@@ -16,6 +16,7 @@ var AbstractBuilder = (function () {
                 }
             },
             errorMsg: {
+                once: false,
                 enable: true,
                 startStr: '错误'
             },
@@ -36,6 +37,10 @@ var AbstractBuilder = (function () {
     };
     AbstractBuilder.prototype.withErrorStartMsg = function (msg) {
         this.config.errorMsg.startStr = msg;
+        return this;
+    };
+    AbstractBuilder.prototype.withOnceMsg = function () {
+        this.config.errorMsg.once = true;
         return this;
     };
     AbstractBuilder.prototype.withErrorHandle = function (func) {

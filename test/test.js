@@ -1,8 +1,12 @@
-import {AxiosHelperConfig, Get, Patch, Post} from "../dist/index"
+import {AxiosHelperConfig, Post} from "../dist"
 
 AxiosHelperConfig.errorMsgImpl = {
-    showErrorToast(title, msg) {
-        console.log(title + msg);
+    showErrorToast(title, data) {
+        console.log(title + data.msg);
+        setTimeout(() => {
+            AxiosHelperConfig.onceMsgFinish();
+            console.log('one message show finish')
+        }, 2000);
     }
 };
 
@@ -53,30 +57,58 @@ AxiosHelperConfig.axiosInstanceBuilder
     .build();
 
 (() => {
-    Get("http://localhost:8888/a")
-        .withSuccessCode(100)
-        .withEnableErrorMsg(true)
-        .do(response => {
-            console.log(response)
-        })
-        .doAfter(() => {
-            console.log("after")
-        });
+    /* Get("http://localhost:8888/security/login")
+         .withSuccessCode(100)
+         .withEnableErrorMsg(true)
+         .withOnceMsg()
+         .do(response => {
+             console.log(response)
+         })
+         .doAfter(() => {
+             console.log("after")
+         });*/
 
-    Post("http://localhost:8888/a")
-        .withURLSearchParams({msg: "assd"})
+    Post("http://localhost:8888/security/login")
+        .withURLSearchParams({username: "a", password: 'aa'})
+        .withOnceMsg()
         .withSuccessCode(200)
         .withEnableErrorMsg(true)
         .do(response => {
             console.log(response)
         })
         .doAfter(() => {
-            console.log("after")
+            console.log("after1")
         });
 
-    Patch("http://localhost:8888/a")
-        .withJson({a: 1})
+    Post("http://localhost:8888/security/login")
+        .withURLSearchParams({username: "a", password: 'aa'})
+        .withSuccessCode(200)
+        .withOnceMsg()
+        .withEnableErrorMsg(true)
         .do(response => {
             console.log(response)
         })
+        .doAfter(() => {
+            console.log("after2")
+        });
+
+    document.getElementById('req').addEventListener('click', () => {
+        Post("http://localhost:8888/security/login")
+            .withURLSearchParams({username: "a", password: 'aa'})
+            .withSuccessCode(200)
+            .withOnceMsg()
+            .withEnableErrorMsg(true)
+            .do(response => {
+                console.log(response)
+            })
+            .doAfter(() => {
+                console.log("after")
+            });
+    });
+    /*
+        Patch("http://localhost:8888/a")
+            .withJson({a: 1})
+            .do(response => {
+                console.log(response)
+            })*/
 })();
