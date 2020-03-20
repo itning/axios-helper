@@ -23,8 +23,12 @@ npm i @itning/axios-helper
 import {AxiosHelperConfig, Patch} from "@itning/axios-helper";
 // Config message toast when net error.
 AxiosHelperConfig.errorMsgImpl = {
-    showErrorToast(title, msg) {
-        console.log(title, msg);
+    showErrorToast(title, data) {
+        console.log(title + data.msg);
+        setTimeout(() => {
+            AxiosHelperConfig.onceMsgFinish();
+            console.log('one message show finish')
+        }, 2000);
     }
 };
 // Config interceptor for each request or response.
@@ -58,6 +62,8 @@ Patch("http://api.localhost.com")
     .withErrorHandle((error) => {
 
     })
+    // Only show once msg
+    .withOnceMsg()
     // Send http request with form data.
     .withFormData({"id": "1"})
     // Send http request with url search param data.
