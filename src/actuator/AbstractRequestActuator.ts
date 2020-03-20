@@ -2,7 +2,7 @@ import {AxiosError, AxiosInstance, AxiosResponse} from 'axios'
 import IRequest from "./IRequest";
 import AxiosInstanceFactory from "../factory/AxiosInstanceFactory";
 import Distribution from "./distribution/Distribution";
-import RequestActuator from "./RequestActuator";
+import ErrorMessage from "./message/ErrorMessage";
 
 /**
  * 请求执行器
@@ -24,8 +24,8 @@ export default abstract class AbstractRequestActuator {
                 if (response.status === this.request.config.success.code) {
                     this.onResponse.call(this, response);
                 } else {
-                    if (RequestActuator.errorMessage.isImplements() && this.request.config.errorMsg.enable) {
-                        RequestActuator.errorMessage.autoShowErrorMsg(this.request.config.errorMsg.startStr, response.data, this.request.config.errorMsg.once)
+                    if (ErrorMessage.isImplements() && this.request.config.errorMsg.enable) {
+                        ErrorMessage.autoShowErrorMsg(this.request.config.errorMsg.startStr, response.data, this.request.config.errorMsg.once)
                     }
                 }
             })

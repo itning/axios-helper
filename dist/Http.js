@@ -42,10 +42,9 @@ var Http = (function () {
             window.URL.revokeObjectURL(url);
         }).catch(function (error) {
             if (error.response !== undefined) {
-                var errorMessage = new ErrorMessage_1.default();
                 console.warn(error);
-                if (errorMessage.isImplements()) {
-                    errorMessage.showErrorMsg("下载失败：", error.toString());
+                if (ErrorMessage_1.default.isImplements()) {
+                    ErrorMessage_1.default.showErrorMsg("下载失败：", error.toString());
                 }
             }
         });

@@ -41,10 +41,9 @@ export default class Http {
             window.URL.revokeObjectURL(url);
         }).catch(error => {
             if (error.response !== undefined) {
-                const errorMessage = new ErrorMessage();
                 console.warn(error);
-                if (errorMessage.isImplements()) {
-                    errorMessage.showErrorMsg("下载失败：", error.toString());
+                if (ErrorMessage.isImplements()) {
+                    ErrorMessage.showErrorMsg("下载失败：", error.toString());
                 }
             }
         });

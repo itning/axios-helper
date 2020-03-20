@@ -27,9 +27,16 @@ var RequestActuator = (function (_super) {
         this.request.config.request.do.call(null, response);
     };
     RequestActuator.prototype.onError = function (error) {
+        if (!error.response) {
+            console.warn(error);
+            if (ErrorMessage_1.default.isImplements()) {
+                ErrorMessage_1.default.autoShowErrorMsg(this.request.config.errorMsg.startStr, error.message, this.request.config.errorMsg.once);
+            }
+            return;
+        }
         if (this.request.config.errorMsg.enable) {
-            if (RequestActuator.errorMessage.isImplements()) {
-                RequestActuator.errorMessage.autoShowErrorMsg(this.request.config.errorMsg.startStr, error.response ? error.response.data : "", this.request.config.errorMsg.once);
+            if (ErrorMessage_1.default.isImplements()) {
+                ErrorMessage_1.default.autoShowErrorMsg(this.request.config.errorMsg.startStr, error.response.data, this.request.config.errorMsg.once);
             }
             if (this.request.config.errorMsg.handleFun) {
                 this.request.config.errorMsg.handleFun.call(null, error);
@@ -41,7 +48,6 @@ var RequestActuator = (function (_super) {
             this.request.config.request.after.call(null);
         }
     };
-    RequestActuator.errorMessage = new ErrorMessage_1.default();
     return RequestActuator;
 }(AbstractRequestActuator_1.default));
 exports.default = RequestActuator;

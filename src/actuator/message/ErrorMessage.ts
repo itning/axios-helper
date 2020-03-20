@@ -12,27 +12,27 @@ export default class ErrorMessage {
         ErrorMessage.isShow = false;
     }
 
-    isImplements(): boolean {
+    static isImplements(): boolean {
         return ErrorMessage.errorMsg !== undefined;
     }
 
-    autoShowErrorMsg(title: string, msg: any, once: boolean = false) {
+    static autoShowErrorMsg(title: string, msg: any, once: boolean = false) {
         if (once) {
-            this.showOnceErrorMsg(title, msg);
+            ErrorMessage.showOnceErrorMsg(title, msg);
         } else {
-            this.showErrorMsg(title, msg);
+            ErrorMessage.showErrorMsg(title, msg);
         }
     }
 
-    showErrorMsg(title: string, msg: any) {
+    static showErrorMsg(title: string, msg: any) {
         ErrorMessage.errorMsg?.showErrorToast(title, msg);
     }
 
-    showOnceErrorMsg(title: string, msg: any) {
+    static showOnceErrorMsg(title: string, msg: any) {
         if (ErrorMessage.isShow) {
             return;
         } else {
-            this.showErrorMsg(title, msg);
+            ErrorMessage.showErrorMsg(title, msg);
             ErrorMessage.isShow = true;
         }
     }

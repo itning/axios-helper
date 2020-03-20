@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var AxiosInstanceFactory_1 = __importDefault(require("../factory/AxiosInstanceFactory"));
 var Distribution_1 = __importDefault(require("./distribution/Distribution"));
-var RequestActuator_1 = __importDefault(require("./RequestActuator"));
+var ErrorMessage_1 = __importDefault(require("./message/ErrorMessage"));
 var AbstractRequestActuator = (function () {
     function AbstractRequestActuator(request) {
         this.instance = AxiosInstanceFactory_1.default.instance;
@@ -21,8 +21,8 @@ var AbstractRequestActuator = (function () {
                 _this.onResponse.call(_this, response);
             }
             else {
-                if (RequestActuator_1.default.errorMessage.isImplements() && _this.request.config.errorMsg.enable) {
-                    RequestActuator_1.default.errorMessage.autoShowErrorMsg(_this.request.config.errorMsg.startStr, response.data, _this.request.config.errorMsg.once);
+                if (ErrorMessage_1.default.isImplements() && _this.request.config.errorMsg.enable) {
+                    ErrorMessage_1.default.autoShowErrorMsg(_this.request.config.errorMsg.startStr, response.data, _this.request.config.errorMsg.once);
                 }
             }
         })
