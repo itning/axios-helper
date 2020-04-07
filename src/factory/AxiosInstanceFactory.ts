@@ -1,4 +1,4 @@
-import Axios, {AxiosInstance, AxiosRequestConfig} from "axios";
+import Axios, {AxiosInstance} from "axios";
 import IRequestInterceptor from "../interceptor/request/IRequestInterceptor";
 import IResponseInterceptor from "../interceptor/response/IResponseInterceptor";
 import IAxiosInstanceConfig from "./IAxiosInstanceConfig";
