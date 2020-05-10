@@ -1,3 +1,5 @@
 test/
 .idea/
+src/
+tsconfig.json
 webpack.config.js

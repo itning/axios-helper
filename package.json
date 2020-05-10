@@ -1,7 +1,12 @@
 {
   "name": "@itning/axios-helper",
-  "version": "1.0.7",
-  "main": "./dist/index.js",
+  "version": "1.1.0",
+  "main": "dist/index.js",
+  "typings": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
   "scripts": {
     "build": "tsc --build tsconfig.json",
     "test": "webpack-dev-server"
@@ -16,6 +21,10 @@
     "url": "http://github.com/itning/axios-helper",
     "type": "git"
   },
+  "bugs": {
+    "url": "http://github.com/itning/axios-helper/issues"
+  },
+  "homepage": "http://github.com/itning/axios-helper#readme",
   "author": {
     "url": "http://github.com/itning",
     "name": "itning",
