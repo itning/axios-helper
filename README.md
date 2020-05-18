@@ -10,6 +10,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/itning/axios-helper.svg)](https://github.com/itning/axios-helper/commits)
 [![GitHub release](https://img.shields.io/github/release/itning/axios-helper.svg)](https://github.com/itning/axios-helper/releases)
 [![npm version](https://badge.fury.io/js/%40itning%2Faxios-helper.svg)](https://badge.fury.io/js/%40itning%2Faxios-helper)
+[![npm](https://img.shields.io/npm/dw/@itning/axios-helper)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/itning/axios-helper.svg)](https://github.com/itning/axios-helper)
 [![HitCount](http://hits.dwyl.io/itning/axios-helper.svg)](http://hits.dwyl.io/itning/axios-helper)
 [![language](https://img.shields.io/badge/language-TypeScript-green.svg)](https://github.com/itning/axios-helper)
