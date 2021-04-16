@@ -12,7 +12,7 @@
 [![npm version](https://badge.fury.io/js/%40itning%2Faxios-helper.svg)](https://badge.fury.io/js/%40itning%2Faxios-helper)
 [![npm downloads](https://img.shields.io/npm/dw/@itning/axios-helper)](https://www.npmjs.com/package/@itning/axios-helper)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/itning/axios-helper.svg)](https://github.com/itning/axios-helper)
-[![HitCount](http://hits.dwyl.io/itning/axios-helper.svg)](http://hits.dwyl.io/itning/axios-helper)
+[![HitCount](http://hits.dwyl.com/itning/axios-helper.svg)](http://hits.dwyl.com/itning/axios-helper)
 [![language](https://img.shields.io/badge/language-TypeScript-green.svg)](https://github.com/itning/axios-helper)
 
 - How to use this lib ?
