@@ -18,21 +18,21 @@
     "helper"
   ],
   "repository": {
-    "url": "http://github.com/itning/axios-helper",
+    "url": "https://github.com/itning/axios-helper",
     "type": "git"
   },
   "bugs": {
-    "url": "http://github.com/itning/axios-helper/issues"
+    "url": "https://github.com/itning/axios-helper/issues"
   },
-  "homepage": "http://github.com/itning/axios-helper#readme",
+  "homepage": "https://github.com/itning/axios-helper#readme",
   "author": {
-    "url": "http://github.com/itning",
+    "url": "https://github.com/itning",
     "name": "itning",
     "email": "itning@itning.top"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.4"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
