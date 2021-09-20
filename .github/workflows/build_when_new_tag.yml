@@ -1,0 +1,16 @@
+name: Build When New Tag
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Npm Install And Build
+        uses: actions/setup-node@v2
+        with:
+         node-version: '14'
+      - run: npm install
+      - run: npm build
