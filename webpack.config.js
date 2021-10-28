@@ -9,7 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, 'build')
     },
     devServer: {
-        contentBase: "./build"
+        static: "./build"
     },
     plugins: [
         new HtmlWebpackPlugin({
